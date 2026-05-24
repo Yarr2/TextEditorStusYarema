@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TextEditorStusYarema.cpp">
+    <ClCompile Include="TextEditorStusYarema.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
