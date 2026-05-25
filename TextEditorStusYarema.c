@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include "LinkedListString.c"
 
 void get_first_character(char* pointer) {
     scanf("%c", &pointer[0]);
@@ -59,13 +60,13 @@ int main()
     printf("Hello, world!\n");
     char* command = (char*)malloc(sizeof(char));
     while (1) {
-        printf("Enter your command");
+        printf("Enter your command > ");
         get_first_character(command);
         if (command[0] == '\n') {
             printf("End of program");
             return 0;
         }
-        printf("Your command is %c\n", command[0]);
+        process_command(command[0]);
     }
     return 0;
     
