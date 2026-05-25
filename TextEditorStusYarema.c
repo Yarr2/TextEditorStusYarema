@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "LinkedListString.c"
+#include "Text.c"
 
 void get_first_character(char* pointer) {
     scanf("%c", &pointer[0]);
@@ -57,16 +57,20 @@ void process_command(char command) {
 }
 int main()
 {
-    struct string* string1 = (struct string*)malloc(sizeof(struct string));
-    struct string* string2 = (struct string*)malloc(sizeof(struct string));
-    printf("Input first string > ");
-    create(string1);
-    printf("\n");
-    printf("Input second string > ");
-    create(string2);
-    printf("\n");
-    insert_at_index(string1, 7, string2);
-    print(string1);
+    struct line text;
+    struct string string1;
+    struct string string2;
+    text.pointer = NULL;
+    text.value = &string1;
+
+    printf("write first line > ");
+    create(&string1);
+    add_line(&text, &string1);
+    printf("write second line > ");
+    create(&string2);
+    add_line(&text, &string2);
+    print_text(&text);
+    destroy_text(&text);
     //printf("Hello, world!\n");
     //char* command = (char*)malloc(sizeof(char));
     //while (1) {
