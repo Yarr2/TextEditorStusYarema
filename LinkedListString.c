@@ -21,6 +21,7 @@ void create(struct string* start) {
 	pointer->pointer = NULL;
 	pointer->value = '\0';
 }
+
 void destroy(struct string* start) {
 	// deallocates all memory to avoid memory leaks
 
@@ -35,6 +36,7 @@ void destroy(struct string* start) {
 	}
 	free(current_pointer);
 }
+
 void print(struct string* start) {
 	// prints our string into console without ending line
 
@@ -47,11 +49,56 @@ void print(struct string* start) {
 
 	}
 }
-void push_front(struct string* start, struct string* string) {
-	// adds another string to front of ours
+
+void push_back(struct string* start, struct string* string) {
+	// adds another string to the back of ours "abc" + "def = "abcdef"
+	struct string* node = start;
+	while (node->pointer != NULL) {
+		
+		node = node->pointer;
+	
+	}
+
+	node->value = string->value;
+	node->pointer = string->pointer;
 }
+
 void insert_at_index(struct string* start, int index, struct string* string) {
 	// adds string to given at given index
+	// "abcdef" + (2,"BBB") = "abBBBcdef"
+	// 0 - a
+	// 1 - b
+	if (index == 0) {
+		push_back(string, start);
+		struct string temp;
+		temp.value = string->value;
+		temp.pointer = string->pointer;
+		string->value = start->value;
+		string->pointer = start->pointer;
+		start->value = temp.value;
+		start->pointer = temp.pointer;
+
+		return;
+	}
+	int counter = 0;
+	struct string* node = start;
+
+	while (counter < index - 1 && node->pointer != NULL) {
+		counter++;
+		node = node->pointer;
+	}
+	if (counter != index - 1) {
+		printf("Index should be inside range of string");
+		return;
+	}
+	struct string* temp = node->pointer;
+
+	node->pointer = string;
+	struct string* text_node = string;
+	while (text_node->pointer->pointer != NULL) {
+		text_node = text_node->pointer;
+	}
+	text_node->pointer = temp;
 }
 
 // why all function can be made to return void:

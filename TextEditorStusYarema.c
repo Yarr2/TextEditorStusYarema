@@ -57,18 +57,28 @@ void process_command(char command) {
 }
 int main()
 {
-    printf("Hello, world!\n");
-    char* command = (char*)malloc(sizeof(char));
-    while (1) {
-        printf("Enter your command > ");
-        get_first_character(command);
-        if (command[0] == '\n') {
-            printf("End of program");
-            return 0;
-        }
-        process_command(command[0]);
-    }
-    return 0;
+    struct string* string1 = (struct string*)malloc(sizeof(struct string));
+    struct string* string2 = (struct string*)malloc(sizeof(struct string));
+    printf("Input first string > ");
+    create(string1);
+    printf("\n");
+    printf("Input second string > ");
+    create(string2);
+    printf("\n");
+    insert_at_index(string1, 7, string2);
+    print(string1);
+    //printf("Hello, world!\n");
+    //char* command = (char*)malloc(sizeof(char));
+    //while (1) {
+    //    printf("Enter your command > ");
+    //    get_first_character(command);
+    //    if (command[0] == '\n') {
+    //        printf("End of program");
+    //        return 0;
+    //    }
+    //    process_command(command[0]);
+    //}
+    //return 0;
 
 }
 
